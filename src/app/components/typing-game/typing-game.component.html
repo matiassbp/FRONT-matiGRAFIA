@@ -19,12 +19,12 @@
     </div>
     
   </div>
-  <hr>
+  <hr style="border-top: 1px solid #ffffff;">
   <div class="row">
     <div class="col mt-4">
       <h2 class="mb-4 text-light text-center" style="font-size: 24px;">Juego de Typing</h2> <!-- Texto centrado y tamaño de fuente aumentado -->
       <div *ngIf="gameStarted" class="mb-3 text-light">
-        <p style="font-size: 24px; text-align: center;"> <!-- Tamaño de fuente aumentado y texto centrado -->
+        <p style="font-size: 55px; text-align: center;"> <!-- Tamaño de fuente aumentado y texto centrado -->
           <span *ngFor="let char of currentSentence.split(''); let i = index" [style.color]="getTextColor(char, userInput[i])">{{ char }}</span>
         </p>
         <input class="form-control mb-3 bg-transparent text-light" type="text" [(ngModel)]="userInput" (input)="checkInput()">
