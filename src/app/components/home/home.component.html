@@ -1,0 +1,18 @@
+<!-- home.component.html -->
+<div class="jumbotron text-center mt-4 text-light">
+  <h1>Bienvenido a una aplicación de mecanografía</h1>
+  <p>Proyecto creado a modo de aprendizaje</p>
+  <button type="button" class="btn btn-primary mt-4" (click)="openLoginModal(loginModalContent)">Iniciar sesión</button>
+  <button type="button" class="btn btn-primary mt-4 ms-4" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
+</div>
+
+<ng-template #loginModalContent let-modal>
+  <div class="modal-header text-light">
+      <h5 class="modal-title">Iniciar sesión</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="loginModal.close()"></button>
+  </div>
+  <div class="modal-body">
+      <app-login (loginSuccess)="handleLoginSuccess()"></app-login>
+  </div>
+</ng-template>
+

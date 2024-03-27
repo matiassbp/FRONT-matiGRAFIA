@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-light">Textos existentes</h2>
+      <ul class="list-group">
+        <li class="list-group-item bg-transparent text-light" *ngFor="let exercise of exercises">
+          <span *ngFor="let char of exercise.text.split('')" class="text-light">{{ char }}</span>
+          <button class="btn btn-secondary btn-sm float-end" (click)="selectText(exercise.text)">Seleccionar</button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h2 class="mb-4 text-light">Ingresar nuevo texto</h2>
+      <textarea class="form-control mb-3 bg-transparent text-light" rows="4" [(ngModel)]="newTextInput"></textarea>
+      <button class="btn btn-primary" (click)="saveNewText()">Guardar Texto</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col mt-4">
+      <h2 class="mb-4 text-light">Juego de Typing</h2>
+      <div *ngIf="gameStarted" class="mb-3 text-light">
+        <p>
+          <span *ngFor="let char of currentSentence.split(''); let i = index" [style.color]="getTextColor(char, userInput[i])">{{ char }}</span>
+        </p>
+        <input class="form-control mb-3" type="text" [(ngModel)]="userInput" (input)="checkInput()">
+        <p *ngIf="correct" class="text-success">{{ feedback }}</p>
+        <p *ngIf="!correct && userInput !== ''" class="text-danger">{{ feedback }}</p>
+      </div>
+      <button class="btn btn-primary" (click)="startGame()" [disabled]="gameStarted">Comenzar Juego</button>
+    </div>
+  </div>
+</div>
